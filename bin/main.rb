@@ -77,7 +77,7 @@ while playing_game
       status = gets.chomp.upcase
     end
     playing_game = false if status == 'N'
-    changing_turns = false if status == 'Y''
+    changing_turns = false if status == 'Y'
     end
   end
 end
