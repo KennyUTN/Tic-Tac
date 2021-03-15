@@ -49,7 +49,7 @@ while playing_game
 
     win = 3
     draw = 4
-# rubocop: disable Metrics/BlockNesting
+    # rubocop: disable Metrics/BlockNesting
     if move == win
       puts '- - - - - - - - - - - - - - - - - -'
       puts "Game finished, #{current_player}, You Won!"
