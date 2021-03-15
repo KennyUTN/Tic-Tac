@@ -45,3 +45,39 @@ while playing_game
       puts 'Please type a valid number between 1 and 9'
       move = gets.chomp.to_i
     end
+
+
+    puts '(Test build: Press 3 to win and 4 to draw)'
+
+    win = 3
+    draw = 4
+
+    if move = win
+      puts '- - - - - - - - - - - - - - - - - -'
+      puts "Game finished, #{current_player}, You Won!"
+      puts '- - - - - - - - - - - - - - - - - -'
+      puts 'Do you want to replay? Y/N'
+     status = gets.chomp.upcase
+     while status != 'Y' && status != 'N'
+       puts 'Please type Y or N'
+       status = gets.chomp.upcase
+     end
+     playing_game = false if status == 'N'
+     changing_turns = false if status == 'Y'
+   end
+
+   if move = draw
+     puts '- - - - - - - - - - - - - - - - - -'
+     puts "Game finished, its a draw!"
+     puts '- - - - - - - - - - - - - - - - - -'
+     puts 'Do you want to replay? Y/N'
+    status = gets.chomp.upcase
+    while status != 'Y' && status != 'N'
+      puts 'Please type Y or N'
+      status = gets.chomp.upcase
+    end
+    playing_game = false if status == 'N'
+    changing_turns = false if status == 'Y''
+    end
+  end
+end
