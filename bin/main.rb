@@ -2,6 +2,7 @@
 puts 'Welcome to the Tic-Tac-Toe Experience \n'
 
 playing_game = true
+  i = 0
 while playing_game
 
   puts 'Player one please enter your name!, you will be X'
@@ -22,7 +23,7 @@ while playing_game
 
   changing_turns = true
   while changing_turns
-    i = 0
+
     i =+ 1
     current_player = player1 if i.odd?
     current_player = player2 if i.even?
