@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require_relative '../lib/game_logic.rb'
+require_relative '../lib/players.rb'
 
 Class Main
 
@@ -38,9 +39,9 @@ while playing_game
   while changing_turns
 
     turns += 1
-    @current_player == @player1 if turns.odd?
+    @current_player = @player1 if turns.odd?
 
-    @current_player == @player2 if turns.even?
+    @current_player = @player2 if turns.even?
 
     puts "#{current_player} it is your turn!"
     print "\n\n"
@@ -66,7 +67,7 @@ while playing_game
 
     @game_logic.updt_board(move, 'Y') if turns.even?
 
-    if @game_logic.winning_move?
+    if @game_logic.winning_move?(@player1_array) || @game_logic.winning_move(@player2_array)
       puts '- - - - - - - - - - - - - - - - - -'
       puts "Game finished, #{current_player}, You Won!"
       puts '- - - - - - - - - - - - - - - - - -'
