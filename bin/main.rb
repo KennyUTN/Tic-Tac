@@ -3,14 +3,12 @@ require_relative '../lib/game_logic.rb'
 require_relative '../lib/players.rb'
 
 class Main
-  def initialize
+
     @game_logic = Logic.new
     @board = @game_logic.board
     @players = Players.new
-    @player1 = Players.player1
-    @player2 = Players.player2
     @current_player = @player1
-  end
+
 
   puts 'Welcome to the Tic-Tac-Toe '
 
@@ -59,7 +57,7 @@ class Main
 
       @game_logic.updt_board(move, 'Y') if turns.even?
 
-      if @game_logic.winning_move?(@player1_array) || @game_logic.winning_move(@player2_array)
+      if @game_logic.winning_move?(@players.player1_array) || @game_logic.winning_move(@players.player2_array)
         puts '- - - - - - - - - - - - - - - - - -'
         puts "Game finished, #{@current_player}, You Won!"
         puts '- - - - - - - - - - - - - - - - - -'
