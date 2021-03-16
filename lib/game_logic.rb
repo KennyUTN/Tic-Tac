@@ -10,12 +10,15 @@ class Logic
   end
 
   def draw?
-    @board.count('X') + @board.count('O') == 9
+    return true if @board.count('X') + @board.count('O') == 9
+    false
   end
 
   def winning_move?(player_array)
-      return true if WIN_MOVES.any? { |i| player_array.to_a.include?(i) }
-      false
+    WIN_MOVES.length.times do |i|
+    return true if WIN_MOVES[i].all? { |j| player_array.to_a.include?(j) }
+     end
+   false
   end
 
     def updt_board(move, symbol)

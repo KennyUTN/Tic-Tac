@@ -57,7 +57,7 @@ class Main
 
       @game_logic.updt_board(move, 'Y') if turns.even?
 
-      if @game_logic.winning_move?(@players.player1_array) || @game_logic.winning_move?(@players.player2_array)
+      if @game_logic.winning_move?(@players.player1_array.to_a) || @game_logic.winning_move?(@players.player2_array.to_a)
         puts '- - - - - - - - - - - - - - - - - -'
         puts "Game finished, #{@current_player}, You Won!"
         puts '- - - - - - - - - - - - - - - - - -'
@@ -68,9 +68,14 @@ class Main
           puts 'Please type Y or N'
           status = gets.chomp.upcase
         end
-        playing_game = false if status == 'N'
-        changing_turns = false if status == 'Y'
 
+        playing_game = false && changing_turns = false if status == 'Y'
+
+        if status == 'N'
+          changing_turns = false
+          @game_logic = Logic.new
+          @board = @game_logic.board
+        end
       elsif @game_logic.draw?
 
         puts '- - - - - - - - - - - - - - - - - -'
@@ -82,10 +87,15 @@ class Main
           puts 'Please type Y or N'
           status = gets.chomp.upcase
         end
-        playing_game = false if status == 'N'
-        changing_turns = false if status == 'Y'
+        playing_game = false && changing_turns = false if status == 'Y'
+        if status == 'N'
+          changing_turns = false
+          @game_logic = Logic.new
+          @board = @game_logic.board
+          end
         # rubocop: enable Metrics/BlockNesting
       end
     end
   end
+  puts 'peace out'
 end
