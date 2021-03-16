@@ -2,7 +2,7 @@
 require_relative '../lib/game_logic.rb'
 require_relative '../lib/players.rb'
 
-Class Main
+class Main
 
 def initialize
   @game_logic = Logic.new
