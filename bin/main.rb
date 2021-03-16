@@ -1,5 +1,17 @@
 #!/usr/bin/env ruby
 require_relative '../lib/game_logic.rb'
+
+Class Main
+
+def initialize
+  @game_logic = Logic.new
+  @board = @game_logic.board
+  @players = Players.new
+  @player1 = Players.player1
+  @player2 = Players.player2
+  @current_player = @player1
+end
+
 puts 'Welcome to the Tic-Tac-Toe Experience \n'
 
 playing_game = true
@@ -28,15 +40,18 @@ while playing_game
     current_player = player1 if i.odd?
     current_player = player2 if i.even?
 
-    grid = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
     puts "#{current_player} it is your turn!"
-    puts
-    print grid[0].join(' | ')
-    puts
-    print grid[1].join(' | ')
-    puts
-    print grid[2].join(' | ')
-    puts
+    print "\n\n"
+        print top = "       |       |       \n"
+        puts "   #{@board[0]}   |   #{@board[1]}   |   #{@board[2]}   "
+        print bottom = "_______|_______|________\n"
+        print top
+        print "   #{@board[3]}   |   #{@board[4]}   |   #{@board[5]}   \n"
+        print bottom
+        print top
+        print "   #{@board[6]}   |   #{@board[7]}   |   #{@board[8]}   \n"
+        print top
 
     puts 'Choose your desired number'
     move = gets.chomp.to_i
@@ -46,13 +61,7 @@ while playing_game
       move = gets.chomp.to_i
     end
 
-
-
-
-
-
-    # rubocop: disable Metrics/BlockNesting
-    if logic.win?
+    if @game_logic.win?
       puts '- - - - - - - - - - - - - - - - - -'
       puts "Game finished, #{current_player}, You Won!"
       puts '- - - - - - - - - - - - - - - - - -'
@@ -65,7 +74,7 @@ while playing_game
       playing_game = false if status == 'N'
       changing_turns = false if status == 'Y'
 
-    elsif logic.draw?
+    elsif @game_logic.draw?
 
       puts '- - - - - - - - - - - - - - - - - -'
       puts 'Game finished, its a draw!'
