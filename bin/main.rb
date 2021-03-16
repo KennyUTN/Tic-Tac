@@ -10,6 +10,7 @@ def initialize
   @player1 = Players.player1
   @player2 = Players.player2
   @current_player = @player1
+  turns = 0
 end
 
 puts 'Welcome to the Tic-Tac-Toe Experience \n'
@@ -36,7 +37,7 @@ while playing_game
   changing_turns = true
   while changing_turns
 
-    i = + 1
+    turns + = 1
     current_player = player1 if i.odd?
     current_player = player2 if i.even?
 
@@ -60,6 +61,7 @@ while playing_game
       puts 'Please type a valid number between 1 and 9'
       move = gets.chomp.to_i
     end
+
 
     if @game_logic.win?
       puts '- - - - - - - - - - - - - - - - - -'
