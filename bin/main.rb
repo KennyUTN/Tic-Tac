@@ -41,9 +41,9 @@ class Main
       @current_player = player2 if turns.even?
 
       puts "#{@current_player} it is your turn!"
-      # puts "   #{@board[0]}   |   #{@board[1]}   |   #{@board[2]}   "
-      # puts "   #{@board[3]}   |   #{@board[4]}   |   #{@board[5]}   "
-      # puts "   #{@board[6]}   |   #{@board[7]}   |   #{@board[8]}   "
+      puts "   #{@board[0]}   |   #{@board[1]}   |   #{@board[2]}   "
+      puts "   #{@board[3]}   |   #{@board[4]}   |   #{@board[5]}   "
+      puts "   #{@board[6]}   |   #{@board[7]}   |   #{@board[8]}   "
 
       puts 'Choose your desired number'
       move = gets.chomp.to_i
@@ -57,7 +57,7 @@ class Main
 
       @game_logic.updt_board(move, 'Y') if turns.even?
 
-      if @game_logic.winning_move?(@players.player1_array) || @game_logic.winning_move(@players.player2_array)
+      if @game_logic.winning_move?(@players.player1_array) || @game_logic.winning_move?(@players.player2_array)
         puts '- - - - - - - - - - - - - - - - - -'
         puts "Game finished, #{@current_player}, You Won!"
         puts '- - - - - - - - - - - - - - - - - -'
