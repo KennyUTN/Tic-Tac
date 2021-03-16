@@ -24,10 +24,10 @@ class Logic
   def updt_board(move, symbol)
     return false if @board[move - 1] == 'X' || @board[move - 1] == 'O'
 
-    player1_array.push(@board[move - 1]) if symbol == 'X'
+    @player1_array.push(@board[move - 1]) if symbol == 'X'
 
-    player2_array.push(@board[move - 1]) if symbol == 'Y'
+    @player2_array.push(@board[move - 1]) if symbol == 'Y'
 
-    @board[move - 1] == symbol
+    @board[move - 1] = symbol
   end
 end
