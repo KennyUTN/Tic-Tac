@@ -11,7 +11,7 @@ class Main
     @player2 = Players.player2
     @current_player = @player1
   end
-game = Main.new
+
   puts 'Welcome to the Tic-Tac-Toe '
 
   playing_game = true
