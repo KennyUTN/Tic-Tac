@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require_relative '../lib/game_logic.rb'
 puts 'Welcome to the Tic-Tac-Toe Experience \n'
 
 playing_game = true
@@ -45,12 +46,13 @@ while playing_game
       move = gets.chomp.to_i
     end
 
-    puts '(Test build: Press 3 to win and 4 to draw)'
 
-    win = 3
-    draw = 4
+
+
+
+
     # rubocop: disable Metrics/BlockNesting
-    if move == win
+    if logic.win?
       puts '- - - - - - - - - - - - - - - - - -'
       puts "Game finished, #{current_player}, You Won!"
       puts '- - - - - - - - - - - - - - - - - -'
@@ -63,7 +65,7 @@ while playing_game
       playing_game = false if status == 'N'
       changing_turns = false if status == 'Y'
 
-    elsif move == draw
+    elsif logic.draw?
 
       puts '- - - - - - - - - - - - - - - - - -'
       puts 'Game finished, its a draw!'
