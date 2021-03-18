@@ -5,7 +5,7 @@ class Main
   @game_logic = Logic.new
   @board = @game_logic.board
   @current_player = @player1
-  @turns = @game_logic.turns
+  @turns = @game_logic.turn
 
   puts 'Welcome to the Tic-Tac-Toe '
 
@@ -32,9 +32,9 @@ class Main
 
     while changing_turns
 
-      @current_player = player1 if @turns.odd?
+      @current_player = player1 if @game_logic.turn.odd?
 
-      @current_player = player2 if @turns.even?
+      @current_player = player2 if @game_logic.turn.even?
 
       puts "#{@current_player} it is your turn!"
 
@@ -50,13 +50,14 @@ class Main
         move = gets.chomp.to_i
       end
 
-      @game_logic.updt_board(move, 'X') if turns.odd?
+      @game_logic.updt_board(move, 'X') if @game_logic.turn.odd?
 
-      @game_logic.updt_board(move, 'O') if turns.even?
+      @game_logic.updt_board(move, 'O') if @game_logic.turn.even?
 
       puts "Debug: Player 1 Moves #{@game_logic.player1_array}"
       puts "Debug: Player 2 Moves #{@game_logic.player2_array}"
       puts "Debug: Board #{@board}"
+      puts "Turn Number #{@game_logic.turn - 1}"
 
       if @game_logic.winning_move?(@game_logic.player1_array) || @game_logic.winning_move?(@game_logic.player2_array)
         puts '- - - - - - - - - - - - - - - - - -'
@@ -72,7 +73,7 @@ class Main
 
         if status == 'N'
           playing_game = false
-          changin_turns = false
+          changing_turns = false
         end
 
         if status == 'Y'
@@ -81,7 +82,7 @@ class Main
           @board = @game_logic.board
         end
 
-      elsif @game_logic.draw?
+      elsif @game_logic.turn == 10
 
         puts '- - - - - - - - - - - - - - - - - -'
         puts 'Game finished, its a draw!'
@@ -94,7 +95,7 @@ class Main
         end
         if status == 'N'
           playing_game = false
-          changin_turns = false
+          changing_turns = false
         end
         if status == 'Y'
           changing_turns = false
