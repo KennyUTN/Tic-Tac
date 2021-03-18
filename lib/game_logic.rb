@@ -1,16 +1,18 @@
-require_relative '../lib/players.rb'
+
 
 class Logic
   attr_reader :board
-  WIN_MOVES = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]].freeze
+  attr_accessor :player1_array, :player2_array
+  WIN_MOVES = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 5, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9]].freeze
   def initialize
     @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    @player1_array = Players.player1_array
-    @player2_array = Players.player2_array
+    @player1_array = []
+    @player2_array = []
+    @turn = 1
   end
 
   def draw?
-    return true if @board.count('X') + @board.count('O') == 9
+    return true if @player1_array.count + @player2_array.count == 9
     false
   end
 
@@ -22,12 +24,17 @@ class Logic
   end
 
     def updt_board(move, symbol)
-      return false if @board[move - 1] == 'X' || @board[move - 1] == 'O'
+      if @board[move - 1] == 'X' || @board[move - 1] == 'O'
+        puts 'Thats move has already been played'
+      else
+
+      @turn += 1
 
       @player1_array.push(@board[move - 1]) if symbol == 'X'
 
-      @player2_array.push(@board[move - 1]) if symbol == 'Y'
+      @player2_array.push(@board[move - 1]) if symbol == 'O'
 
       @board[move - 1] = symbol
+     end
     end
  end

@@ -1,14 +1,11 @@
 #!/usr/bin/env ruby
 require_relative '../lib/game_logic.rb'
-require_relative '../lib/players.rb'
 
 class Main
-
-    @game_logic = Logic.new
-    @board = @game_logic.board
-    @players = Players.new
-    @current_player = @player1
-
+  @game_logic = Logic.new
+  @board = @game_logic.board
+  @current_player = @player1
+  @turns = @game_logic.turns
 
   puts 'Welcome to the Tic-Tac-Toe '
 
@@ -32,15 +29,15 @@ class Main
     puts "#{player2} you are O"
 
     changing_turns = true
-    turns = 0
+
     while changing_turns
 
-      turns += 1
-      @current_player = player1 if turns.odd?
+      @current_player = player1 if @turns.odd?
 
-      @current_player = player2 if turns.even?
+      @current_player = player2 if @turns.even?
 
       puts "#{@current_player} it is your turn!"
+
       puts "   #{@board[0]}   |   #{@board[1]}   |   #{@board[2]}   "
       puts "   #{@board[3]}   |   #{@board[4]}   |   #{@board[5]}   "
       puts "   #{@board[6]}   |   #{@board[7]}   |   #{@board[8]}   "
@@ -55,9 +52,13 @@ class Main
 
       @game_logic.updt_board(move, 'X') if turns.odd?
 
-      @game_logic.updt_board(move, 'Y') if turns.even?
+      @game_logic.updt_board(move, 'O') if turns.even?
 
-      if @game_logic.winning_move?(@players.player1_array.to_a) || @game_logic.winning_move?(@players.player2_array.to_a)
+      puts "Debug: Player 1 Moves #{@game_logic.player1_array}"
+      puts "Debug: Player 2 Moves #{@game_logic.player2_array}"
+      puts "Debug: Board #{@board}"
+
+      if @game_logic.winning_move?(@game_logic.player1_array) || @game_logic.winning_move?(@game_logic.player2_array)
         puts '- - - - - - - - - - - - - - - - - -'
         puts "Game finished, #{@current_player}, You Won!"
         puts '- - - - - - - - - - - - - - - - - -'
@@ -69,13 +70,17 @@ class Main
           status = gets.chomp.upcase
         end
 
-        playing_game = false && changing_turns = false if status == 'Y'
-
         if status == 'N'
+          playing_game = false
+          changin_turns = false
+        end
+
+        if status == 'Y'
           changing_turns = false
           @game_logic = Logic.new
           @board = @game_logic.board
         end
+
       elsif @game_logic.draw?
 
         puts '- - - - - - - - - - - - - - - - - -'
@@ -87,8 +92,11 @@ class Main
           puts 'Please type Y or N'
           status = gets.chomp.upcase
         end
-        playing_game = false && changing_turns = false if status == 'Y'
         if status == 'N'
+          playing_game = false
+          changin_turns = false
+        end
+        if status == 'Y'
           changing_turns = false
           @game_logic = Logic.new
           @board = @game_logic.board
