@@ -1,5 +1,3 @@
-
-
 class Logic
   attr_reader :board
   attr_accessor :player1_array, :player2_array, :turn, :turns
@@ -13,15 +11,15 @@ class Logic
 
   def winning_move?(player_array)
     WIN_MOVES.length.times do |i|
-    return true if WIN_MOVES[i].all? { |j| player_array.to_a.include?(j) }
-     end
-   false
+      return true if WIN_MOVES[i].all? { |j| player_array.to_a.include?(j) }
+    end
+    false
   end
 
-    def updt_board(move, symbol)
-      if @board[move - 1] == 'X' || @board[move - 1] == 'O'
-        puts 'Thats move has already been played'
-      else
+  def updt_board(move, symbol)
+    if @board[move - 1] == 'X' || @board[move - 1] == 'O'
+      puts 'Thats move has already been played'
+    else
 
       @turn += 1
 
@@ -30,6 +28,6 @@ class Logic
       @player2_array.push(@board[move - 1]) if symbol == 'O'
 
       @board[move - 1] = symbol
-     end
     end
- end
+  end
+end

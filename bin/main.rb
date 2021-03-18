@@ -20,9 +20,10 @@ class Main
     puts 'Player two please enter your name!, you will be O'
 
     player2 = gets.chomp
-
+    system 'cls'
+    system 'clear'
     puts '////////////////////////////'
-    puts "#{player1} VS #{player2}"
+    puts "    #{player1} VS #{player2}"
     puts '////////////////////////////'
 
     puts "#{player1} you are X"
@@ -37,12 +38,17 @@ class Main
       @current_player = player2 if @game_logic.turn.even?
 
       puts "#{@current_player} it is your turn!"
+      puts ''
+      puts ''
 
       puts "   #{@board[0]}   |   #{@board[1]}   |   #{@board[2]}   "
       puts "   #{@board[3]}   |   #{@board[4]}   |   #{@board[5]}   "
       puts "   #{@board[6]}   |   #{@board[7]}   |   #{@board[8]}   "
 
-      puts 'Choose your desired number'
+      puts ''
+      puts ''
+
+      puts 'Choose your desired available number'
       move = gets.chomp.to_i
 
       while (1..9).none?(move)
@@ -54,16 +60,27 @@ class Main
 
       @game_logic.updt_board(move, 'O') if @game_logic.turn.even?
 
-      puts "Debug: Player 1 Moves #{@game_logic.player1_array}"
-      puts "Debug: Player 2 Moves #{@game_logic.player2_array}"
-      puts "Debug: Board #{@board}"
-      puts "Turn Number #{@game_logic.turn - 1}"
+      # puts "Debug: Player 1 Moves #{@game_logic.player1_array}"
+      # puts "Debug: Player 2 Moves #{@game_logic.player2_array}"
+      # puts "Debug: Board #{@board}"
+      # puts "Turn Number #{@game_logic.turn - 1}"
+      system 'cls'
+      system 'clear'
 
       if @game_logic.winning_move?(@game_logic.player1_array) || @game_logic.winning_move?(@game_logic.player2_array)
+
         puts '- - - - - - - - - - - - - - - - - -'
         puts "Game finished, #{@current_player}, You Won!"
         puts '- - - - - - - - - - - - - - - - - -'
+        puts ''
+        puts ''
+        puts "   #{@board[0]}   |   #{@board[1]}   |   #{@board[2]}   "
+        puts "   #{@board[3]}   |   #{@board[4]}   |   #{@board[5]}   "
+        puts "   #{@board[6]}   |   #{@board[7]}   |   #{@board[8]}   "
+        puts ''
+        puts ''
         puts 'Do you want to replay? Y/N'
+
         status = gets.chomp.upcase
         # rubocop: disable Metrics/BlockNesting
         while status != 'Y' && status != 'N'
@@ -87,6 +104,13 @@ class Main
         puts '- - - - - - - - - - - - - - - - - -'
         puts 'Game finished, its a draw!'
         puts '- - - - - - - - - - - - - - - - - -'
+        puts ''
+        puts ''
+        puts "   #{@board[0]}   |   #{@board[1]}   |   #{@board[2]}   "
+        puts "   #{@board[3]}   |   #{@board[4]}   |   #{@board[5]}   "
+        puts "   #{@board[6]}   |   #{@board[7]}   |   #{@board[8]}   "
+        puts ''
+        puts ''
         puts 'Do you want to replay? Y/N'
         status = gets.chomp.upcase
         while status != 'Y' && status != 'N'
@@ -101,10 +125,10 @@ class Main
           changing_turns = false
           @game_logic = Logic.new
           @board = @game_logic.board
-          end
+        end
         # rubocop: enable Metrics/BlockNesting
       end
     end
   end
-  puts 'peace out'
+  puts 'Game Finished'
 end
