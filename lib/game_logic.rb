@@ -17,17 +17,10 @@ class Logic
   end
 
   def updt_board(move, symbol)
-    if @board[move - 1] == 'X' || @board[move - 1] == 'O'
-      puts 'Thats move has already been played'
-    else
+    @player1_array.push(@board[move - 1]) if symbol == 'X'
 
-      @turn += 1
+    @player2_array.push(@board[move - 1]) if symbol == 'O'
 
-      @player1_array.push(@board[move - 1]) if symbol == 'X'
-
-      @player2_array.push(@board[move - 1]) if symbol == 'O'
-
-      @board[move - 1] = symbol
-    end
+    @board[move - 1] = symbol
   end
 end
