@@ -8,15 +8,15 @@ This project was split in 4 milestones, which were:
 - Writing the game instructions
 
 
-## Welcome Screen
-<img src="./media/s1.JPG" width="100%" height="500" />
-
 
 ## Built With
 
 
 - Ruby
 - Rubocop
+
+## Screenshots
+<img src="./media/screen1.png" />
 
 ### Prerequisites
 
@@ -38,6 +38,7 @@ This project was split in 4 milestones, which were:
 - If all spaces are chosen and there is no winner, it is considered a draw
 - On both situations above, there is the option to restart the game
 - Have fun!
+
 
 ### Authors
 
