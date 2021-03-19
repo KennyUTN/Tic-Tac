@@ -71,7 +71,6 @@ class Main
         @game_logic.updt_board(move, 'X') if @game_logic.turn.odd?
         @game_logic.turn += 1
 
-
         system 'cls'
         system 'clear'
 

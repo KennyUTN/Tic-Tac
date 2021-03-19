@@ -25,15 +25,9 @@ class Logic
   end
 
   def legal_move?(move)
-    if (1..9).none?(move) || @board[move - 1] == 'X' || @board[move - 1] == 'O'
-      return true
-    end
+    return true if (1..9).none?(move) || @board[move - 1] == 'X' || @board[move - 1] == 'O'
+
     false
-
   end
 
-  def winner?
-    
-
-  end
 end
