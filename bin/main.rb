@@ -59,7 +59,7 @@ class Main
         puts 'Choose your desired available number'
         move = gets.chomp.to_i
 
-        while (1..9).none?(move) || @board[move - 1] == 'X' || @board[move - 1] == 'O'
+        while legal_move?(move)
 
           puts 'Illegal Move, Choose an available number between 1 and 9'
           move = gets.chomp.to_i
@@ -71,10 +71,7 @@ class Main
         @game_logic.updt_board(move, 'X') if @game_logic.turn.odd?
         @game_logic.turn += 1
 
-        # puts "Debug: Player 1 Moves #{@game_logic.player1_array}"
-        # puts "Debug: Player 2 Moves #{@game_logic.player2_array}"
-        # puts "Debug: Board #{@board}"
-        # puts "Turn Number #{@game_logic.turn - 1}"
+
         system 'cls'
         system 'clear'
 

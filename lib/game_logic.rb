@@ -23,4 +23,17 @@ class Logic
 
     @board[move - 1] = symbol
   end
+
+  def legal_move?(move)
+    if (1..9).none?(move) || @board[move - 1] == 'X' || @board[move - 1] == 'O'
+      return true
+    end
+    false
+
+  end
+
+  def winner?
+    
+
+  end
 end
