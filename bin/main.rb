@@ -68,8 +68,6 @@ class Main
 
         @game_logic.updt_board(move)
 
-
-
         system 'cls'
         system 'clear'
 
