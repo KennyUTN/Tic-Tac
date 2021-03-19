@@ -16,12 +16,19 @@ class Logic
     false
   end
 
-  def updt_board(move, symbol)
-    @player1_array.push(@board[move - 1]) if symbol == 'X'
 
-    @player2_array.push(@board[move - 1]) if symbol == 'O'
+  def updt_board(move)
+     if @turn.odd?
 
-    @board[move - 1] = symbol
+        @player1_array.push(@board[move - 1])
+        @turn += 1
+        @board[move - 1] = "X"
+     elsif @turn.even?
+        @player2_array.push(@board[move - 1])
+        @turn += 1
+        @board[move - 1] = "O"
+     end
+
   end
 
   def legal_move?(move)

@@ -66,10 +66,9 @@ class Main
         end
         puts "Its Turn #{@game_logic.turn}"
 
-        @game_logic.updt_board(move, 'O') if @game_logic.turn.even?
+        @game_logic.updt_board(move)
 
-        @game_logic.updt_board(move, 'X') if @game_logic.turn.odd?
-        @game_logic.turn += 1
+
 
         system 'cls'
         system 'clear'
