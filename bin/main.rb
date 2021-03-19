@@ -59,7 +59,7 @@ class Main
         puts 'Choose your desired available number'
         move = gets.chomp.to_i
 
-        while legal_move?(move)
+        while @game_logic.legal_move?(move)
 
           puts 'Illegal Move, Choose an available number between 1 and 9'
           move = gets.chomp.to_i
