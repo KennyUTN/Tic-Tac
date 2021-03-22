@@ -1,5 +1,5 @@
 require_relative '../lib/game_logic.rb'
-
+# rubocop disable Metrics/BlockLength
 describe Logic do
   let(:test) { Logic.new }
   let(:test_player_array) { [1, 2, 3] }
@@ -45,4 +45,5 @@ describe Logic do
       expect(test.board).to eql([1, 2, 3, 4, 'X', 6, 7, 8, 9])
     end
   end
+  # rubocop enable Metrics/BlockLength
 end
