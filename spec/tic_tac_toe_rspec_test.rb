@@ -1,4 +1,3 @@
-
 require_relative '../lib/game_logic.rb'
 
 describe Logic do
@@ -13,10 +12,6 @@ describe Logic do
     it 'checks if player1 has their own array' do
       expect(test.player1_array).to eql([])
     end
-
-    it 'checks if it is TURN 1 on the beginning' do
-      expect (test.turn).to be = 1
-    end
   end
   # winning_move
 
@@ -28,7 +23,7 @@ describe Logic do
 
   describe '#legal_move' do
     it 'checks if playing a move in the center of the board is legal' do
-      expect(test.legal_move?(6)).to be(true)
+      expect(test.legal_move?(6)).to be(false)
     end
   end
   # Update_board
