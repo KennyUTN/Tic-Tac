@@ -1,7 +1,5 @@
-#!/usr/bin/env ruby
 
 require_relative '../lib/game_logic.rb'
-require 'rspec'
 
 describe Logic do
   let(:test) { Logic.new }
@@ -9,15 +7,15 @@ describe Logic do
 
   describe '#initialize' do
     it 'checks if board is initialized' do
-      expect(test.board).to eql(Array)
+      expect(test.board).to eql([1, 2, 3, 4, 5, 6, 7, 8, 9])
     end
 
     it 'checks if player1 has their own array' do
-      expect(test.player1_array).to eql(Array)
+      expect(test.player1_array).to eql([])
     end
 
     it 'checks if it is TURN 1 on the beginning' do
-      expect test.turn.to eql(1)
+      expect (test.turn).to eql(1)
     end
   end
   # winning_move
