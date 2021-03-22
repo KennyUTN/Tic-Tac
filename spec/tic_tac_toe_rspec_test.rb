@@ -3,6 +3,7 @@ require_relative '../lib/game_logic.rb'
 describe Logic do
   let(:test) { Logic.new }
   let(:test_player_array) { [1, 2, 3] }
+  let(:test_player_array2) { [1, 2, 4] }
 
   describe '#initialize' do
     it 'checks if board is initialized' do
@@ -22,7 +23,7 @@ describe Logic do
 
     context 'not a winning move'
     it ' returns false' do
-      expect test.winning_move?([1, 2, 4]).to eql(false)
+      expect(test.winning_move?(test_player_array2)).to eql(false)
     end
   end
 
@@ -32,7 +33,7 @@ describe Logic do
       expect(test.legal_move?(5)).to be(false)
     end
 
-    context 'checks for an Illegal move'
+    context 'checks for an Illegal move (on inexistent)'
     it 'returns true' do
       expect(test.legal_move?(200)).to be(true)
     end
