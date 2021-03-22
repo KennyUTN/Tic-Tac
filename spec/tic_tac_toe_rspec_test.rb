@@ -1,4 +1,4 @@
-# rubocop disable Metrics/BlockLength
+# rubocop: disable Metrics/BlockLength
 require_relative '../lib/game_logic.rb'
 describe Logic do
   let(:test) { Logic.new }
@@ -46,4 +46,4 @@ describe Logic do
     end
   end
 end
-# rubocop enable Metrics/BlockLength
+# rubocop: enable Metrics/BlockLength
