@@ -19,11 +19,22 @@ describe Logic do
     it 'returns true on a winning board state (test player array)' do
       expect(test.winning_move?(test_player_array)).to eql(true)
     end
+
+    context 'not a winning move'
+    it ' returns false' do
+      expect test.winning_move?([1, 2, 4]).to eql(false)
+    end
   end
 
   describe '#legal_move' do
-    it 'checks if playing a move in the center of the board is legal' do
-      expect(test.legal_move?(6)).to be(false)
+    context 'checks if a move on the center of the board is legal'
+    it 'returns false' do
+      expect(test.legal_move?(5)).to be(false)
+    end
+
+    context 'checks for an Illegal move'
+    it 'returns true' do
+      expect(test.legal_move?(200)).to be(true)
     end
   end
   # Update_board
