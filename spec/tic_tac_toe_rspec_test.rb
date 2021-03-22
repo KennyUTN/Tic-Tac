@@ -15,7 +15,7 @@ describe Logic do
     end
 
     it 'checks if it is TURN 1 on the beginning' do
-      expect (test.turn).to eql(1)
+      expect (test.turn).to be = 1
     end
   end
   # winning_move
@@ -28,7 +28,7 @@ describe Logic do
 
   describe '#legal_move' do
     it 'checks if playing a move in the center of the board is legal' do
-      expect(test.legal_move?(5)).to eql(true)
+      expect(test.legal_move?(6)).to be(true)
     end
   end
   # Update_board
